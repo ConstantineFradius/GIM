@@ -1,16 +1,13 @@
 package constantinefradius.gim;
 
+import constantinefradius.gim.common.Data;
+import constantinefradius.gim.data.Materials;
+import constantinefradius.gim.loaders.WorldGenLoader;
+import constantinefradius.gim.proxy.ClientHandler;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
+import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.gti.data.*;
-import muramasa.gti.data.advancement.ProgressionAdvancements;
-import muramasa.gti.datagen.GregTechBlockTagProvider;
-import muramasa.gti.proxy.ClientHandler;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,7 +30,6 @@ public class GIM implements IAntimatterRegistrar {
         INSTANCE = this;
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientHandler::init);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-
         AntimatterAPI.addRegistrar(INSTANCE);
     }
 
@@ -49,11 +45,11 @@ public class GIM implements IAntimatterRegistrar {
             gen.addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", gen));
         }
         if (e.includeServer()) {
-            gen.addProvider(new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
+            gen.addProvider(new AntimatterBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
             gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
-            gen.addProvider(new Recipes(gen));
-            gen.addProvider(new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), gen, new ProgressionAdvancements()));
-            gen.addProvider(new Localizations.en_US(gen));
+            //gen.addProvider(new Recipes(gen));
+            //gen.addProvider(new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), gen, new ProgressionAdvancements()));
+            gen.addProvider(new AntimatterLanguageProvider(Ref.ID, Ref.NAME + " en_us Localization", "en_us", gen));
         }
     }
 
@@ -64,6 +60,14 @@ public class GIM implements IAntimatterRegistrar {
 
     @Override
     public void onRegistrationEvent(RegistrationEvent event) {
-        return;
+        switch (event) {
+            case DATA_INIT:
+                Materials.init();
+                Data.init();
+                break;
+            case WORLDGEN_INIT:
+                WorldGenLoader.init();
+                break;
+        }
     }
 }
