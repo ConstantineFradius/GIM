@@ -1,0 +1,38 @@
+modLoader="javafml"
+loaderVersion="[${loader_version},)"
+issueTrackerURL="http://my.issue.tracker/"
+
+[[mods]]
+modId="gim"
+version="${version}"
+displayName="GIM"
+updateJSONURL="http://myurl.me/"
+displayURL="http://example.com/"
+logoFile="examplemod.png"
+credits="GregoriusTechneticies for his work on GregTech"
+authors="ConstantineFradius"
+description='''Constantech Megalogeologica'''
+[[dependencies.gim]]
+    modId="gti"
+    mandatory=true
+    versionRange="0.0.1"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.gim]]
+    modId="antimatter"
+    mandatory=true
+    versionRange="0.0.1"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.gim]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.gim]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version}"
+    ordering="NONE"
+    side="BOTH"

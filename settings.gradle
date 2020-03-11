@@ -1,0 +1,8 @@
+include ":tesseractapi"
+project(":tesseractapi").projectDir = file("../TesseractAPI")
+
+include ":antimatterapi"
+project(":antimatterapi").projectDir = file("../AntimatterAPI")
+
+include ":gregtech"
+project(":gregtech").projectDir = file("../GregTech")
