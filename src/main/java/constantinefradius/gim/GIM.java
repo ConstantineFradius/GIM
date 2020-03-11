@@ -22,14 +22,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod("gim")
+@Mod(Ref.ID)
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class GIM implements IAntimatterRegistrar {
-    public static final String ID = "gim";
-    public static final String NAME = "GIM";
 
     public static GIM INSTANCE;
-    public static Logger LOGGER = LogManager.getLogger(ID);
+    public static Logger LOGGER = LogManager.getLogger(Ref.ID);
 
     public GIM() {
         INSTANCE = this;
@@ -47,21 +45,21 @@ public class GIM implements IAntimatterRegistrar {
     public static void onDataGather(GatherDataEvent e) {
         DataGenerator gen = e.getGenerator();
         if (e.includeClient()) {
-            gen.addProvider(new AntimatterBlockStateProvider(ID, NAME + " BlockStates", gen));
-            gen.addProvider(new AntimatterItemModelProvider(ID, NAME + " Item Models", gen));
+            gen.addProvider(new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", gen));
+            gen.addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", gen));
         }
         if (e.includeServer()) {
-            gen.addProvider(new GregTechBlockTagProvider(ID, NAME.concat(" Block Tags"), false, gen));
-            gen.addProvider(new AntimatterItemTagProvider(ID, NAME.concat(" Item Tags"), false, gen));
+            gen.addProvider(new GregTechBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
+            gen.addProvider(new AntimatterItemTagProvider(Ref.ID, Ref.NAME.concat(" Item Tags"), false, gen));
             gen.addProvider(new Recipes(gen));
-            gen.addProvider(new AntimatterAdvancementProvider(ID, NAME.concat(" Advancements"), gen, new ProgressionAdvancements()));
+            gen.addProvider(new AntimatterAdvancementProvider(Ref.ID, Ref.NAME.concat(" Advancements"), gen, new ProgressionAdvancements()));
             gen.addProvider(new Localizations.en_US(gen));
         }
     }
 
     @Override
     public String getId() {
-        return ID;
+        return Ref.ID;
     }
 
     @Override
