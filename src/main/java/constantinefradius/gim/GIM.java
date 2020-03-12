@@ -8,6 +8,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.*;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
+import muramasa.antimatter.registration.RegistrationHelper;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -41,8 +42,8 @@ public class GIM implements IAntimatterRegistrar {
     public static void onDataGather(GatherDataEvent e) {
         DataGenerator gen = e.getGenerator();
         if (e.includeClient()) {
-            gen.addProvider(new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", gen));
-            gen.addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", gen));
+            gen.addProvider(new AntimatterBlockStateProvider(Ref.ID, Ref.NAME + " BlockStates", gen, muramasa.gti.Ref.ID));
+            gen.addProvider(new AntimatterItemModelProvider(Ref.ID, Ref.NAME + " Item Models", gen, muramasa.gti.Ref.ID));
         }
         if (e.includeServer()) {
             gen.addProvider(new AntimatterBlockTagProvider(Ref.ID, Ref.NAME.concat(" Block Tags"), false, gen));
@@ -64,6 +65,9 @@ public class GIM implements IAntimatterRegistrar {
             case DATA_INIT:
                 Materials.init();
                 Data.init();
+                break;
+            case DATA_BUILD:
+                RegistrationHelper.buildDefaultMaterialDerivedObjects(Ref.ID);
                 break;
             case WORLDGEN_INIT:
                 WorldGenLoader.init();

@@ -1,6 +1,7 @@
 package constantinefradius.gim.loaders;
 
 import muramasa.antimatter.worldgen.StoneLayerOre;
+import muramasa.antimatter.worldgen.object.WorldGenOreSmall;
 import muramasa.antimatter.worldgen.object.WorldGenStoneLayer;
 
 import static constantinefradius.gim.common.Data.*;
