@@ -191,7 +191,6 @@ public class Materials {
     public static Material Larimar = new Material(Ref.ID, "larimar", 0xb3eaf2, FINE).asDust().add(Sodium, 1, Calcium, 1, Copper, 1, Silicon, 3, Oxygen, 9, Hydrogen, 1);
     public static Material Pectolite = new Material(Ref.ID, "pectolite", 0xe3e0d1, FINE).asDust().add(Sodium, 1, Calcium, 2, Silicon, 3, Oxygen, 9, Hydrogen, 1);
     public static Material Tinaksite = new Material(Ref.ID, "tinaksite", 0x944393, FINE).asDust().add(Sodium, 1, Calcium, 1, Silicon, 7, Oxygen, 20, Titanium, 1, Manganese, 1);
-    public static Material Charioite = new Material(Ref.ID, "charoite", 0xefd0f5, FINE).asDust().add(Sodium, 1, Calcium, 1, Silicon, 4, Oxygen, 14, Hydrogen, 2, Potassium, 1, Flourine, 1);
     public static Material Epidote = new Material(Ref.ID, "epidote", 0x8f8c33, FINE).asDust().add(Calcium, 2, Iron, 1, Aluminium, 2, Silicon, 3, Oxygen, 13, Hydrogen, 1);
     public static Material Ukanite = new Material(Ref.ID, "ukanite", 0x628052, FINE).asDust().add(PotassiumFeldspar, 1, Epidote, 5);
     public static Material Gypsum = new Material(Ref.ID, "gypsum", 0xf0efce, FINE).asDust().add(Calcium, 1, Sulfur, 1, Oxygen, 4, Water, 6);
