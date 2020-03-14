@@ -139,6 +139,7 @@ dependencies {
 }
 
 jar {
+    zip64 true
     manifest {
         attributes([
             "Specification-Title": "gim",
