@@ -13,12 +13,23 @@ import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.Textures.*;
 
 public class Materials {
-    //TODO Melting points
-    //TODO Blasting Temperatures
-    //TODO Metal parts
-    //TODO Tool materials
-    //TODO Set fuel powers
-    //TODO Set check colors
+    //List for Constant
+    //TODO Replace placeholders proper materials
+    //TODO Give Amber and BlueAmber materials
+    //TODO Invent magic elements
+    //TODO Finnish adding names
+    //LOW PRIO
+    //TODO Check melting temps
+    //TODO Check blast furnace recipes
+    //TODO Check which metal parts should be added
+    //TODO Check materials used in tool generation
+    //TODO Check materials used as fuel inlc. fuel values
+    //TODO Check material colors
+
+    //List for Bass
+    //TODO Fix .mats() with lambda used with less than 6 mats
+    //TODO Implement By-Products
+    //TODO Implement Stone
 
     public static void init() {
         AntimatterAPI.all(Material.class).forEach(Material::setChemicalFormula);
@@ -51,8 +62,6 @@ public class Materials {
     public static Material Rhenium = new Material(Ref.ID, "rhenium", 0x323232, METALLIC, Re).asMetal(3459, 3459, FOIL);
     public static Material Thallium = new Material(Ref.ID, "thalium", 0xffdcdc, SHINY, Tl).asMetal();
     public static Material Neptinium = new Material(Ref.ID, "neptunium", 0xfa4646, SHINY, Np).asMetal(912, 0).addTools(6.0F, 280, 3);
-
-    public static Material Chromium = new Material(Ref.ID, "chromium", 0xffdcdc, SHINY, Cr).asMetal();
     public static Material Flourine = new Material(Ref.ID, "flourine", 0xffdcdc, NONE, F).asFluid();
     public static Material Iodine = new Material(Ref.ID, "iodine", 0xffdcdc, DULL, I).asMetal();
     public static Material Thulium = new Material(Ref.ID, "thulium", 0xffdcdc, DULL, Tm).asMetal();
@@ -74,7 +83,6 @@ public class Materials {
     //endregion
 
     //region placeholders
-    //TODO Replace with proper materials
     public static Material Powelite = new Material(Ref.ID, "powelite_placeholder", 0x0055ff, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Iron,1));
     public static Material Pyrochlore = new Material(Ref.ID, "pyrochlore_placeholder", 0x0055ff, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Iron, 1));
     public static Material Lazurite = new Material(Ref.ID, "lazurite_placeholder", 0x0055ff, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Iron, 1));
@@ -90,7 +98,7 @@ public class Materials {
     //regionend
 
     //region Ores
-    //Lithium Ores
+    //Lithium
     public static Material LithiumChloride = new Material(Ref.ID, "lithium_chloride", 0xe8e4e3, DULL).asDust().mats(of(Lithium, 1, Chlorine, 2));
     public static Material LithiumChlorate = new Material(Ref.ID, "lithium_chlorate", 0xe8e4e3, DULL).asDust().mats(of(Lithium, 1, Chlorine, 1, Oxygen, 3));
     public static Material LithiumPerchlorate = new Material(Ref.ID, "lithium_perchlorate", 0xe8e4e3, DULL).asDust().mats(of(Lithium, 1, Chlorine, 1, Oxygen, 4));
@@ -100,11 +108,9 @@ public class Materials {
     public static Material Kunzite = new Material(Ref.ID, "kunzite", 0xe3d5e3, DULL).asDust(ORE).mats(b -> b.put(Lithium, 5).put(Aluminium, 5).put(Silicon, 9).put(Oxygen, 29));
     public static Material Petalite = new Material(Ref.ID, "petalite", 0xededeb, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Lithium, 1, Aluminium, 1, Silicon, 4, Oxygen, 10));
 
-    //Elemental Beryllium
+    //Beryllium
     public static Material Bertrandite = new Material(Ref.ID, "bertrandite", 0xfafaed, FINE).asDust().mats(of(Beryllium, 4, Silicon, 2, Hydrogen, 2));
     public static Material Gadolinite = new Material(Ref.ID, "gadolinite", 0x666564, METALLIC).asDust(ORE, ORE_SMALL).mats(b -> b.put(Neodymium, 1).put(Yttrium, 1).put(Lanthanum, 1).put(Cerium, 1).put(Beryllium, 4).put(Iron, 2));
-
-    //Beryllium Ores
     public static Material Aquamarine = new Material(Ref.ID, "aquamarine", 0x67f5eb, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 2, Oxygen, 18));
     public static Material Heliodor = new Material(Ref.ID, "heliodor", 0xd9d900, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 2, Oxygen, 18));
     public static Material Goshenite = new Material(Ref.ID, "goshenite", 0xffffff, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 2, Oxygen, 18));
@@ -115,17 +121,21 @@ public class Materials {
     public static Material Alexandrite = new Material(Ref.ID, "alexandrite", 0xa6edc8, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 1, Aluminium, 2, Oxygen, 4));
     public static Material Cymophane = new Material(Ref.ID, "cymophane", 0xf7ff59, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 1, Aluminium, 2, Oxygen, 4));
     public static Material TrapicheEmerald = new Material(Ref.ID, "trapiche_emerald", 0x0a5218, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 3, Aluminium, 2, Silicon, 2, Oxygen, 18));
-    //labra
+
+    //Labradorite
     public static Material YellowLabradorite = new Material(Ref.ID, "yellow_laboradorite", 0xe6e070, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 1, Aluminium, 2, Oxygen, 4));
     public static Material OrangeLabradorite = new Material(Ref.ID, "orange_laboradorite", 0xa3763b, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 1, Aluminium, 2, Oxygen, 4));
     public static Material BlueLabradorite = new Material(Ref.ID, "blue_laboradorite", 0x68abde, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 1, Aluminium, 2, Oxygen, 4));
     public static Material GreenLabradorite = new Material(Ref.ID, "green_laboradorite", 0x68de8e, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Beryllium, 1, Aluminium, 2, Oxygen, 4));
+
     //Boron
     public static Material Datolite = new Material(Ref.ID, "datolite", 0xfae8f8, METALLIC).asDust(ORE, ORE_SMALL).mats(b -> b.put(Calcium, 1).put(Boron, 1).put(Silicon, 1).put(Oxygen, 5));
     public static Material BoronicAcid = new Material(Ref.ID, "boronic_acid", 0xe3dccf, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Boron, 1, Oxygen, 3, Hydrogen, 3));
+
     //Carbon
     public static Material Amber = new Material(Ref.ID, "amber", 0xb8891c, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(7.0F, 256, 2);
     public static Material BlueAmber = new Material(Ref.ID, "blue_amber", 0x173278, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(7.0F, 256, 2);
+
     //Diamond
     public static Material YellowDiamond = new Material(Ref.ID, "yellow_diamond", 0xe9f02e, DIAMOND).asGem(true, ORE, ORE_SMALL).addTools(8.0F, 1280, 3).mats(of(Carbon, 1));
     public static Material PinkDiamond = new Material(Ref.ID, "pink_diamond", 0xf5a2ef, DIAMOND).asGem(true, ORE, ORE_SMALL).addTools(8.0F, 1280, 3).mats(of(Carbon, 1));
@@ -141,9 +151,11 @@ public class Materials {
     public static Material CyanDiamond = new Material(Ref.ID, "cyan_diamond", 0x21ffcf, DIAMOND).asGem(true, ORE, ORE_SMALL).addTools(8.0F, 1280, 3).mats(of(Carbon, 1));
     public static Material PurpleDiamond = new Material(Ref.ID, "purple_diamond", 0xb214de, DIAMOND).asGem(true, ORE, ORE_SMALL).addTools(8.0F, 1280, 3).mats(of(Carbon, 1));
     public static Material GoldDiamond = new Material(Ref.ID, "gold_diamond", 0xc9c14d, DIAMOND).asGem(true, ORE, ORE_SMALL).addTools(8.0F, 1280, 3).mats(of(Carbon, 1));
+
     //Fluorine
     public static Material Rosenbergite = new Material(Ref.ID, "rosenbergite", 0xffffc8, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Aluminium, 1, Flourine, 1));
     public static Material Cryolite = new Material(Ref.ID, "cyrolite", 0xe8e4e3, DULL).asDust().mats(of(Sodium, 3, Flourine, 6, Aluminium, 3));
+
     //Fluorite
     public static Material BrownFlourite = new Material(Ref.ID, "brown_fluorite", 0x473b1a, DULL).asDust().mats(of(Calcium, 1, Flourine, 2));
     public static Material BlackFlourite = new Material(Ref.ID, "black_fluorite", 0x0d0d0c, DULL).asDust().mats(of(Calcium, 1, Flourine, 2));
@@ -157,20 +169,22 @@ public class Materials {
     public static Material OrangeFlourite = new Material(Ref.ID, "orange_fluorite", 0xcf8621, DULL).asDust().mats(of(Calcium, 1, Flourine, 2));
     public static Material PinkFlourite = new Material(Ref.ID, "pink_fluorite", 0xd15ec2, DULL).asDust().mats(of(Calcium, 1, Flourine, 2));
     public static Material CyanFlourite = new Material(Ref.ID, "cyan_fluorite", 0x0d9184, DULL).asDust().mats(of(Calcium, 1, Flourine, 2));
-    //Sodium
+
     //Jade
     public static Material WhiteJade = new Material(Ref.ID, "white_jade", 0xe4f5eb, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(b -> b.put(Sodium, 2).put(Aluminium, 1).put(Iron, 1).put(Silicon, 4));
     public static Material CyanJade = new Material(Ref.ID, "cyan_jade", 0x93dbd3, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(b -> b.put(Sodium, 2).put(Aluminium, 1).put(Iron, 1).put(Silicon, 4));
     public static Material BlackJade = new Material(Ref.ID, "black_jade", 0xc8ffff, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(b -> b.put(Sodium, 2).put(Aluminium, 1).put(Iron, 1).put(Silicon, 4));
     public static Material GreenJade = new Material(Ref.ID, "green_jade", 0x3af284, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(b -> b.put(Sodium, 2).put(Aluminium, 1).put(Iron, 1).put(Silicon, 4));
     public static Material PurpleJade = new Material(Ref.ID, "purple_jade", 0x965ae0, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(b -> b.put(Sodium, 2).put(Aluminium, 1).put(Iron, 1).put(Silicon, 4));
-    //sodiumsalts
+
+    //Sodium Salts
     public static Material SodiumNitrate = new Material(Ref.ID, "sodium_nitrate", 0xe8e4e3, DULL).asDust().mats(of(Sodium, 1, Oxygen, 3, Nitrogen, 1));
     public static Material SodiumSulfite = new Material(Ref.ID, "sodium_sulfite", 0xe8e4e3, NONE).asDust().mats(of(Sodium, 2, Sulfur, 2, Oxygen, 3));
     public static Material SodiumSulfate = new Material(Ref.ID, "sodium_sulfate", 0xe8e4e3, NONE).asDust().mats(of(Sodium, 2, Sulfur, 2, Oxygen, 4));
     public static Material SodiumPyrosulfate = new Material(Ref.ID, "sodium_pyrosulfate", 0xe8e4e3, NONE).asDust().mats(of(Sodium, 2, Sulfur, 2, Oxygen, 7));
     public static Material SodiumAluminate = new Material(Ref.ID, "sodium_aluminate", 0xe8e4e3, DULL).asDust().mats(of(Sodium, 1, Oxygen, 2, Aluminium, 1));
     public static Material Trona = new Material(Ref.ID, "trona", 0xffffff, DULL).asDust().mats(of(Sodium, 3, Carbon, 2, Oxygen, 8));
+
     //Magnesium
     public static Material BalasRuby = new Material(Ref.ID, "balas_ruby", 0x8f0a0e, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Magnesium, 1, Aluminium, 2, Oxygen, 4));
     public static Material BalasSapphire = new Material(Ref.ID, "balas_sapphire", 0x0f6abf, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(9.0F, 590, 3).mats(of(Magnesium, 1, Aluminium, 2, Oxygen, 4));
@@ -183,6 +197,7 @@ public class Materials {
     public static Material SnowFlakeObsidian = new Material(Ref.ID, "snowflake_obsidian", 0x252626, DULL).asDust().mats(of(Magnesium, 1, Iron, 1, Silicon, 2, Oxygen, 8));
     public static Material Bischofite = new Material(Ref.ID, "bischifite", 0xffffff, DULL).asDust().mats(of(MagnesiumChloride, 1, Water, 6));
     public static Material Rhodonite = new Material(Ref.ID, "rhodonite", 0xfad7f2, FINE).asDust().mats(b -> b.put(Manganese, 6).put(Calcium, 1).put(Iron, 1).put(Magnesium, 1).put(Zinc, 1).put(Oxygen, 30));
+
     //Aluminium
     public static Material Gibbsite = new Material(Ref.ID, "gibbsite", 0xcee3ca, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Aluminium, 1, Oxygen, 3, Hydrogen, 1));
     public static Material Dumortierite = new Material(Ref.ID, "dumortierite", 0x134363, FINE).asDust().mats(of(Aluminium, 7, Boron, 1, Silicon, 3, Oxygen, 18));
@@ -197,8 +212,8 @@ public class Materials {
     public static Material BlackSapphire = new Material(Ref.ID, "black_sapphire", 0x140f05, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3));
     public static Material PinkSapphire = new Material(Ref.ID, "pink_sapphire", 0xffc7d2, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(7.0F, 256, 2).mats(of(Chrome, 1, Aluminium, 4, Oxygen, 6));
     public static Material WhiteSapphire = new Material(Ref.ID, "white_sapphire", 0xfcf7f8, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(7.0F, 256, 2).mats(of(Aluminium, 2, Oxygen, 3));
-
     public static Material Alumina = new Material(Ref.ID, "alumina", 0xc3d2e0, GEM_V).asDust(ORE, ORE_SMALL).mats(of(Aluminium, 2, Oxygen, 3));
+
     //Silicon
     public static Material Moissanite = new Material(Ref.ID, "moissanite", 0xebe7e6, GEM_V).asDust(ORE, ORE_SMALL).mats(of(Silicon, 1, Carbon, 1));
 
@@ -259,7 +274,7 @@ public class Materials {
     public static Material Ukanite = new Material(Ref.ID, "ukanite", 0x628052, FINE).asDust().mats(of(PotassiumFeldspar, 1, Epidote, 5));
     public static Material Charoite = new Material(Ref.ID, "charoite", 0xf75394, DULL).asDust(ORE, ORE_SMALL).mats(b -> b.put(Potassium, 2).put(Calcium, 1).put(Sodium, 1).put(Silicon, 4));
 
-    //Calcium Evaporants //TODO check
+    //Calcium Evaporite
     public static Material Gypsum = new Material(Ref.ID, "gypsum", 0xf0efce, FINE).asDust().mats(of(Calcium, 1, Sulfur, 1, Oxygen, 4, Water, 6));
     public static Material CalciumChloride = new Material(Ref.ID, "calcium_chloride", 0xfaf9f7, DULL).asDust().mats(of(Calcium, 1, Chlorine, 2));
     public static Material CalciumSulfate = new Material(Ref.ID, "calcium_sulfate", 0xe8e4e3, DULL).asDust().mats(of(Calcium, 1, Sulfur, 1, Oxygen, 2));
@@ -272,7 +287,7 @@ public class Materials {
     public static Material VanadiumPentoxide = new Material(Ref.ID, "vanadiumpentoxide", 0xcc9c43, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Vanadium, 2, Oxygen, 5));
     public static Material Patronite = new Material(Ref.ID, "patronite", 0x141211, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Vanadium, 1, Sulfur, 4));
     public static Material Vanadinite = new Material(Ref.ID, "vanadinite", 0xe33627, METALLIC).asDust(ORE, ORE_SMALL).mats(of(Vanadium, 3, Lead, 5, Oxygen, 12, Chlorine, 1));
-    public static Material Tourmaline = new Material(Ref.ID, "tourmaline", 0x030201, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(7.0F, 256, 2).mats(b -> b.put(Lithium, 1).put(Manganese, 1).put(Magnesium, 2).put(Chromium, 1).put(Vanadium, 1).put(Boron, 5).put(Flourine, 1));
+    public static Material Tourmaline = new Material(Ref.ID, "tourmaline", 0x030201, GEM_V).asGem(true, ORE, ORE_SMALL).addTools(7.0F, 256, 2).mats(b -> b.put(Lithium, 1).put(Manganese, 1).put(Magnesium, 2).put(Chrome, 1).put(Vanadium, 1).put(Boron, 5).put(Flourine, 1));
 
     //Chromium
     public static Material Chromite = new Material(Ref.ID, "chromite", 0x1e1e1e, METALLIC).asDust(ORE).mats(of(Iron, 1, Chrome, 2, Oxygen, 4));
@@ -584,6 +599,10 @@ public class Materials {
     public static Material Sufisulf = new Material(Ref.ID, "sufisulf", 0xc8c800, SHINY).asDust(ORE, ORE_SMALL).mats(b -> b.put(Sulfurkang, 5).put(Supotras, 3).put(Sufca, 3).put(Sutrans, 3).put(Sulfur, 10));
     public static Material Juaswas = new Material(Ref.ID, "juaswas", 0xffc8c8, SHINY).asDust(ORE, ORE_SMALL).mats(b -> b.put(Alkali, 10).put(Alkaline, 8).put(Buckre, 4).put(Metalloids, 3).put(Alumina, 20));
     public static Material Metlas = new Material(Ref.ID, "metlas", 0xc8c8c8, SHINY).asDust(ORE, ORE_SMALL).mats(b -> b.put(Augustimic, 2).put(Riemaswet, 4).put(Juaswas, 3).put(Ferousnasite, 10).put(Molnihatcrium, 3));
+    //endregion
+
+    //region Ore By-Products
+
     //endregion
 
     ////region Stones
