@@ -2,13 +2,13 @@ package constantinefradius.gim.data;
 
 import constantinefradius.gim.Ref;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.materials.Element;
-import muramasa.antimatter.materials.Material;
+import muramasa.antimatter.material.Element;
+import muramasa.antimatter.material.Material;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.materials.Element.*;
-import static muramasa.antimatter.materials.MaterialType.*;
-import static muramasa.antimatter.materials.TextureSet.NONE;
+import static muramasa.antimatter.material.Element.*;
+import static muramasa.antimatter.material.MaterialType.*;
+import static muramasa.antimatter.material.TextureSet.NONE;
 import static muramasa.gti.data.Materials.*;
 import static muramasa.gti.data.Textures.*;
 
